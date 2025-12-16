@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exploring the Impact of Learning Rate on Neural Network Training</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+  <header>
+    <h1>Exploring the Impact of Learning Rate on Neural Network Training</h1>
+    <p class="subtitle">
+      An experimental study on how learning rate influences neural network
+      convergence, stability, and performance.
+    </p>
+
+    <p class="author">
+  By <strong>Monique Antoinette R. Mendoza</strong>
+</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Abstract</h2>
+      <p>
+        The learning rate is a key hyperparameter in neural networks that controls how quickly the model 
+        learns during training. It determines the size of the steps taken to minimize the loss function. 
+        It controls how much change is made in response to the error encountered, 
+        each time the model weights are updated. It determines the size of the steps 
+        taken towards a minimum of the loss function during optimization.
+        This study investigates the impact of different learning rate values on
+        neural network training behavior using a controlled experiment on the
+        MNIST dataset.
+      </p>
+    </section>
+
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        Training deep neural networks requires careful tuning of hyperparameters.
+        Among these, learning rate plays a central role in determining how quickly
+        and how stably a model learns. An improperly chosen learning rate can lead
+        to divergence or excessively slow convergence.
+      </p>
+    </section>
+
+    <section>
+      <h2>Learning Rate Background</h2>
+      <p>
+        In mathematical terms, when using a method like Stochastic Gradient Descent (SGD),
+         the learning rate often denoted as α or η is multiplied by the gradient of the 
+         loss function to update the weights:
+      </p>
+
+      <div class="equation">
+        w = w − α⋅∇L(w)
+      </div>
+
+      <p>
+        A high learning rate can cause unstable updates, while a low learning rate
+        may slow down learning and lead to underfitting.
+      </p>
+      <p>
+        Where:
+        <ul>
+          <li><strong>w</strong> represents the weights of the model</li>
+          <li><strong>α</strong> is the learning rate that controls the step size</li>
+          <li><strong>∇L(w)</strong> is the gradient of the loss function with respect to the weights</li>
+        </ul>
+      </p>
+    </section>
+
+    <section>
+      <h2>Dataset</h2>
+      <p>
+        The MNIST handwritten digits dataset was used for this experiment. It
+        contains grayscale images of digits from 0 to 9 and is widely used as a
+        benchmark in deep learning research.
+      </p>
+    </section>
+
+    <section>
+      <h2>Experimental Setup</h2>
+      <ul>
+        <li>Model: Multilayer Perceptron (MLP)</li>
+        <li>Optimizer: Adam</li>
+        <li>Loss Function: Cross-Entropy Loss</li>
+        <li>Batch Size: 64</li>
+        <li>Epochs: 15</li>
+        <li>Learning Rates: 0.1, 0.001, 0.00001</li>
+      </ul>
+    </section>
+
+    <section>
+  <h2>Final Accuracy Results</h2>
+
+  <p>
+    After training the neural network using different learning rate values,
+    the final test accuracy for each configuration was recorded using the
+    following code:
+  </p>
+
+  <img src="image\Final Accuracy Result.png" alt="Final Test Accuracy Results" class="result-image">
+  <ul>
+    <li>
+      <strong>Learning Rate = 0.1 (13.87%)</strong><br>
+      This learning rate is too high, causing the model to make excessively
+      large parameter updates. As a result, the training process becomes
+      unstable and fails to converge, leading to very poor accuracy.
+    </li>
+
+    <li>
+      <strong>Learning Rate = 0.001 (97.75%)</strong><br>
+      This learning rate provides a balanced update step, allowing the model
+      to converge smoothly and efficiently. It achieves the highest accuracy,
+      indicating effective learning and good generalization.
+    </li>
+
+    <li>
+      <strong>Learning Rate = 0.00001 (92.66%)</strong><br>
+      While stable, this learning rate is too small, resulting in slow
+      convergence. The model learns gradually but does not fully reach the
+      optimal solution within the given number of epochs.
+    </li>
+  </ul>
+</section>
+
+    <section>
+      <h2>Plot Results</h2>
+      <p>
+        The training loss curves below illustrate how different learning rates
+        affect training behavior.
+      </p>
+
+      <img src="image\loss_curve.png" alt="Training Loss Curve" class="result-image">
+    </section>
+
+    <section>
+  <h2>Conclusion</h2>
+
+  <p>
+    This experiment shows that the <strong>learning rate</strong> is one of the most 
+    important hyperparameters when training deep learning models. The 
+    experiment revealed that a moderate learning rate of 0.001 
+    achieved the best performance by balancing both the convergence speed 
+    and stability. In contrast, higher and lower learning rates either 
+    led to instability or slower learning, respectively.
+  </p>
+
+  <p>
+    The <strong>finding that LR=0.001</strong> provides the optimal trade-off between 
+    training efficiency and model accuracy underscores the importance 
+    of hyperparameter tuning in achieving high-quality models.
+  </p>
+</section>
+
+<section>
+  <h2>References</h2>
+  <ul>
+    <li>PyTorch Documentation. (n.d.). Retrieved from <a href="https://pytorch.org/docs/stable/" target="_blank">https://pytorch.org/docs/stable/</a></li>
+    <li><a href="https://www.geeksforgeeks.org/machine-learning/impact-of-learning-rate-on-a-model/" target="_blank">Impact of Learning Rate on a Model - GeeksforGeeks</a></li>
+  </ul>
+</section>
+
+
+    <section>
+      <h2>Experiment Code</h2>
+      <p>
+        The full experiment implementation is available as a Jupyter Notebook:
+      </p>
+
+      <a href="notebook\Learning_Rate.ipynb" class="button">
+        View Jupyter Notebook
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      Keywords: Deep Learning · Learning Rate · Neural Networks · Optimization
+    </p>
+  </footer>
+
+</body>
+</html>
